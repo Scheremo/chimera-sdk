@@ -14,9 +14,9 @@ endmacro()
 
 ## TODO: Add vsim target or some such
 macro(add_chimera_test name)
-  add_chimera_executable(${ARGV})
+  add_chimera_executable(${name})
   if(TEST_MODE STREQUAL "simulation")
-    add_test(NAME ${name} COMMAND ${SIMULATION_BINARY} +BINARY=$<TARGET_FILE:${name}> +PRELMODE=${PRELOAD_MODE_INT})
+    add_test(NAME ${name} COMMAND ${SOC_MODEL_BINARY} +BINARY=$<TARGET_FILE:${name}> +PRELMODE=${PRELOAD_MODE_INT})
   endif()
 endmacro()
 
